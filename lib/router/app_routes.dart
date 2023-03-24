@@ -1,6 +1,4 @@
-/// Represents the app routes and their paths and authorization requirements.
-///
-/// The routes are used in the [AppRouter] to navigate between pages.
+/// Represents the app routes and their paths.
 enum AppRoutes {
   recipesList(
     name: 'recipesList',

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_example_with_type_safe_routes/models/recipe.dart';
+import 'package:go_router_example_with_type_safe_routes/pages/recipe_details_args.dart';
+import 'package:go_router_example_with_type_safe_routes/router/navigation_helpers.dart';
 
 class RecipesListPage extends StatelessWidget {
   const RecipesListPage({super.key});
@@ -10,32 +13,37 @@ class RecipesListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Recipes'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () => context.pushNamed(
-              'recipeDetails',
-              extra: {
-                'recipeId': 1,
-                'recipeName': 'Recipe 1',
-                'recipeDetails': 'Recipe 1 details',
-              },
+      body: ListView.builder(
+        itemCount: Recipe.recipes.length,
+        itemBuilder: (context, index) {
+          final recipe = Recipe.recipes[index];
+          return ListTile(
+            title: Text(
+              recipe.name,
             ),
-            child: const Text('Go to Recipe 1'),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () => context.pushNamed(
-              'recipeDetails',
-              extra: {
-                'recipeId': 1,
-                'recipeName': 'Recipe 1',
-                'recipeDetails': 'Recipe 1 details',
-              },
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
             ),
-            child: const Text('Go to Recipe 1'),
-          ),
-        ],
+            onTap: () => onRecipePressed(context, recipe),
+          );
+        },
+      ),
+    );
+  }
+
+  void onRecipePressed(BuildContext context, Recipe recipe) {
+    context.navigator.pushRecipeDetails(
+      RecipeDetailsArgs(
+        recipe: recipe,
+        onAddedToFavorite: (Recipe recipe) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Added ${recipe.name} to favorite',
+              ),
+            ),
+          );
+        },
       ),
     );
   }
