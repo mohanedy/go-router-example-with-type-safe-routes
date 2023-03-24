@@ -303,6 +303,6 @@ In conclusion, GoRouter is a powerful package that simplifies navigation in Flut
 
 You can find the project’s source code on [Github](https://github.com/Mohanedy98/go-router-example-with-type-safe-routes). Feel free to play around and reach me on [Twitter](https://twitter.com/mohanedy98) if you have any questions, suggestions, or feedback.
 
-I would like to express my gratitude to @A-Fawzyy for his valuable feedback and suggestions that improved this article.
+I’m so grateful to @A-Fawzyy for his awesome help and advice that made this article better. ❤️
 
 Thanks for reading! ❤️
