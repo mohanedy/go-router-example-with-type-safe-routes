@@ -9,7 +9,7 @@ Leveraging go_router and type-safe routes for advanced navigation scenarios in F
   - [What we are going to build 🏗️](#what-we-are-going-to-build-️)
   - [Setup 🛠️](#setup-️)
   - [Basic Navigation 🗺️](#basic-navigation-️)
-    - [we can see there are two problems with the above code](#we-can-see-there-are-two-problems-with-the-above-code)
+    - [we can see there are three problems with the above code](#we-can-see-there-are-three-problems-with-the-above-code)
   - [Type-safe Routes 🔒](#type-safe-routes-)
     - [Defining the routes](#defining-the-routes)
   - [Conclusion 🎉](#conclusion-)
@@ -150,7 +150,7 @@ Now that we have our router configured, we can start using it to navigate betwee
 
 we have used the `context.pushNamed` method to navigate to the `recipeDetails` route and we have also passed the recipe object and a callback function to be used when the recipe is added to favorite to pass the selected recipe back to the `recipeList` and display snackbar.
 
-### we can see there are two problems with the above code
+### we can see there are three problems with the above code
 
 1. Using a string as the route name is error-prone, because we can misspell it and the compiler won’t notice it.
 
@@ -189,14 +189,14 @@ enum AppRoutes {
 
   /// Represents the route name
   ///
-  /// Example: `AppRoutes.splash.name`
-  /// Returns: 'splash'
+  /// Example: `AppRoutes.recipesList.name`
+  /// Returns: 'recipesList'
   final String name;
 
   /// Represents the route path
   ///
-  /// Example: `AppRoutes.splash.path`
-  /// Returns: '/splash'
+  /// Example: `AppRoutes.recipesList.path`
+  /// Returns: '/recipesList'
   final String path;
 
   @override
@@ -242,7 +242,7 @@ Now we can use the enum values instead of the string route names in our navigati
 
 We have fixed the first issue, so the compiler will detect any misspelling in the route names or paths. However, we still face the second issue, which is passing the recipe object and the callback function as a map in the extra data. This means that we can provide the wrong data and the compiler won’t warn us.
 
-To solve this problem lets wrap the recipe object and the callback function in a `RecipeDetailsArgs` class as follows:
+To solve this problem let's wrap the recipe object and the callback function in a `RecipeDetailsArgs` class as follows:
 
 ```dart
 class RecipeDetailsArgs {
@@ -256,7 +256,7 @@ class RecipeDetailsArgs {
 }
 ```
 
-Now lets update the `recipeDetails` route to accept the `RecipeDetailsArgs` class as extra data as follows:
+Now let's update the `recipeDetails` route to accept the `RecipeDetailsArgs` class as extra data as follows:
 
 ```dart
 class AppRouter {
@@ -319,7 +319,7 @@ class AppNavigatorImpl implements AppNavigator {
 }
 ```
 
-But hold on, how do we access the `AppNavigator` instance from our pages? Fortunately, we can utilize extension methods to enable any widget to access the app navigator.
+But hold on, how do we access the `AppNavigator` instance from our pages? Fortunately, we can utilize extension methods on the `BuildContext` to enable any widget to access the app navigator.
 
 ```dart
 extension NavigationHelpersExt on BuildContext {
@@ -348,7 +348,7 @@ Now we could access the `AppNavigator` instance from any widget by updating the 
   }
 ```
 
-We have fixed the second and third issue as well. The compiler will detect any misspelling in the arguments. Also, for production projects that have many pages, we can easily see all the defined pages in the app and navigate to them by typing `context.navigator`, without having to check the `AppRouter`.
+We have fixed the second and third issues as well. The compiler will detect any misspelling in the arguments. Also, for production projects that have many pages, we can easily see all the defined pages in the app and navigate to them by typing `context.navigator`, without having to check the `AppRouter` 🤯.
 
 Another benefit of using this approach is we could extract the whole routing logic to a separate module and share it between different modules.
 
