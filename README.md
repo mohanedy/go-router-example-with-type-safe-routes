@@ -3,18 +3,18 @@
 Leveraging go_router and type-safe routes for advanced navigation scenarios in Flutter 🚀
 
 - [Developing type-safe routing module for production flutter apps using go\_router](#developing-type-safe-routing-module-for-production-flutter-apps-using-go_router)
-  - [Introduction](#introduction)
-  - [Prerequisites](#prerequisites)
+  - [Introduction 👋](#introduction-)
+  - [Prerequisites 👨🏼‍💻](#prerequisites-)
     - [To follow this article, you will need](#to-follow-this-article-you-will-need)
-  - [What we are going to build](#what-we-are-going-to-build)
-  - [Setup](#setup)
-  - [Basic Navigation](#basic-navigation)
+  - [What we are going to build 🏗️](#what-we-are-going-to-build-️)
+  - [Setup 🛠️](#setup-️)
+  - [Basic Navigation 🗺️](#basic-navigation-️)
     - [we can see there are two problems with the above code](#we-can-see-there-are-two-problems-with-the-above-code)
-  - [Type-safe Routes](#type-safe-routes)
+  - [Type-safe Routes 🔒](#type-safe-routes-)
     - [Defining the routes](#defining-the-routes)
-  - [Conclusion](#conclusion)
+  - [Conclusion 🎉](#conclusion-)
 
-## Introduction
+## Introduction 👋
 
 If you’re looking for a way to navigate between screens and handle deep links in your app, you might have heard of go_router. It’s a powerful routing package that supports web, multiple navigators, redirections, and other advanced scenarios. But how do you use it effectively and elegantly? 🤔
 
@@ -28,7 +28,7 @@ By the end of this article, you will learn how to:
 
 Ready to dive in? Let’s get started! 🚀
 
-## Prerequisites
+## Prerequisites 👨🏼‍💻
 
 ### To follow this article, you will need
 
@@ -37,7 +37,7 @@ Ready to dive in? Let’s get started! 🚀
 - The go_router package (version 6.4.1 or higher).
 - A basic understanding of Flutter widgets and navigation.
 
-## What we are going to build
+## What we are going to build 🏗️
 
 Our app will let you browse and save simple recipes.
 
@@ -48,7 +48,7 @@ The app has two pages:
 
 <p align="center"><img src="docs_assets/demo_app.gif"/></p>
 
-## Setup
+## Setup 🛠️
 
 To use go_router in your app, you need to switch to the router constructor on MaterialApp or CupertinoApp and provide it with a Router configuration. Routing packages, such as go_router, typically provide a configuration for you.
 
@@ -124,7 +124,7 @@ Now we need to use the router in our app, so we need to replace the `MaterialApp
   }
 ```
 
-## Basic Navigation
+## Basic Navigation 🗺️
 
 Now that we have our router configured, we can start using it to navigate between pages. We can use the `GoRouter.of(context)` or the handy `context.pushNamed` method to get the router instance and use it to navigate between pages.
 
@@ -162,7 +162,7 @@ we have used the `context.pushNamed` method to navigate to the `recipeDetails` r
 
    For example, if we want to add a new route for editing a recipe, we have to open the app router file and look for all the existing routes to make sure we don’t use a duplicate name or path.
 
-## Type-safe Routes
+## Type-safe Routes 🔒
 
 Now that we have a working basic navigation, we can improve it by using enums and extension methods to make it safer and more convenient to use. This will help us avoid the problems we mentioned earlier and make it easier to move around the app.
 
@@ -352,7 +352,7 @@ We have fixed the second and third issue as well. The compiler will detect any m
 
 Another benefit of using this approach is we could extract the whole routing logic to a separate module and share it between different modules.
 
-## Conclusion
+## Conclusion 🎉
 
 To sum up, GoRouter is a great package that makes navigation easier in Flutter apps. 🚗 But it can also cause mess and confusion when we have many pages. 😕 To prevent this, we can leverage enhanced enums and extension methods to make our navigation more reliable and user-friendly. 👍 This way, we can get the best of both worlds: GoRouter’s features and code quality and readability. 🙌
 
