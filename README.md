@@ -2,6 +2,8 @@
 
 Leveraging go_router and type-safe routes for advanced navigation scenarios in Flutter 🚀
 
+<p align="center"><img src="docs_assets/navigation-cover.png" width=700/></p>
+
 - [Developing type-safe routing module for production flutter apps using go\_router](#developing-type-safe-routing-module-for-production-flutter-apps-using-go_router)
   - [Introduction 👋](#introduction-)
   - [Prerequisites 👨🏼‍💻](#prerequisites-)
